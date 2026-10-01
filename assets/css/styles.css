@@ -287,6 +287,11 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; text-
   transition: transform 1.2s var(--ease);
 }
 .card:hover .card__art-bg, .card:hover .card__art img { transform: scale(1.06); }
+.card__art.has-photo .card__art-word, .card__art.has-photo .card__grain { display: none; }
+.card__art.has-photo::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(28, 24, 19, 0.28) 0%, transparent 35%);
+}
 .card__art-word {
   position: absolute; left: 1.1rem; right: 1.1rem; bottom: 0.6rem;
   font: 900 clamp(2.6rem, 6vw, 4.2rem)/0.85 var(--font-display);
