@@ -31,7 +31,7 @@ Everything editable is in **`assets/js/config.js`**:
 | Where booking requests go | `booking.formEndpoint` (see below) |
 | A package's name, inclusions or price | that package in `packages` |
 | Partner names | `partners` |
-| Package photos | add the image to `assets/img/` and set `image: "assets/img/your-photo.jpg"` on the package |
+| Package photos | drop the photo into `assets/img/packages/` using the file name listed in that folder's README |
 | Hero video | set `heroVideo: "assets/video/hero.mp4"` |
 
 ### Must do before launch

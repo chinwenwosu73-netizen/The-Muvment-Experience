@@ -46,12 +46,16 @@ window.MUVMENT_CONFIG = {
   /*
    * priceBasis is one of: "person", "couple".
    * groupExample (optional) shows a quoted total for a group size.
-   * image (optional) is a path such as "assets/img/artsy-couple.jpg";
-   * without one, the card shows its colour artwork instead.
+   * image is the package photo. Drop a file with exactly that name into
+   * assets/img/packages/ and it appears on the card; until then the card
+   * shows its colour artwork. imageAlt describes the photo for screen
+   * readers. Landscape, about 1600×1200 px, under 400 KB works best.
    */
   packages: [
     {
       id: "executive-oceanic-romance",
+      image: "assets/img/packages/executive-oceanic-romance.jpg",
+      imageAlt: "A couple sharing dinner and wine aboard a private boat on the Lagos lagoon at sunset",
       category: "romance",
       title: "The Executive Oceanic Romance",
       tagline: "A private evening on the water.",
@@ -66,6 +70,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "artsy-couple",
+      image: "assets/img/packages/artsy-couple.jpg",
+      imageAlt: "A couple laughing at a pottery wheel during a paint-and-sip session",
       category: "artsy-couple",
       title: "Artsy Couple",
       tagline: "Create, dine and stay in style.",
@@ -80,6 +86,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "soft-life-saturday-regular",
+      image: "assets/img/packages/soft-life-saturday-regular.jpg",
+      imageAlt: "Friends relaxing together with pedicures at a luxury spa",
       category: "soft-life",
       tier: "Regular",
       title: "Soft Life Saturday",
@@ -96,6 +104,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "soft-life-saturday-premium",
+      image: "assets/img/packages/soft-life-saturday-premium.jpg",
+      imageAlt: "A serene luxury hotel suite with a soaking tub and breakfast tray",
       category: "soft-life",
       tier: "Premium",
       title: "Soft Life Saturday",
@@ -115,6 +125,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "afrocentric-culture-weekday",
+      image: "assets/img/packages/afrocentric-culture-weekday.jpg",
+      imageAlt: "Guests on a guided tour of artworks celebrating Fela and Afrobeats history",
       category: "culture",
       tier: "Weekday",
       title: "Afrocentric Culture",
@@ -129,6 +141,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "afrocentric-culture-sunday",
+      image: "assets/img/packages/afrocentric-culture-sunday.jpg",
+      imageAlt: "A live Afrobeat band performing on stage to a VIP crowd",
       category: "culture",
       tier: "Sunday",
       title: "Afrocentric Culture",
@@ -143,6 +157,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "corporate-cafe-strategy",
+      image: "assets/img/packages/corporate-cafe-strategy.jpg",
+      imageAlt: "An executive team in a bright café boardroom over pastries and coffee",
       category: "executive",
       title: "The Corporate Café Strategy",
       tagline: "Plan the quarter. Then play.",
@@ -158,6 +174,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "creative-ignition-off-site",
+      image: "assets/img/packages/creative-ignition-off-site.jpg",
+      imageAlt: "A team in tactical gear celebrating after a paintball match",
       category: "executive",
       title: "The Creative Ignition Off-Site",
       tagline: "Team bonding with a competitive edge.",
@@ -172,6 +190,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "nightlife-turnup-pass",
+      image: "assets/img/packages/nightlife-turnup-pass.jpg",
+      imageAlt: "A VIP lounge table with bottle service and sparklers at night",
       category: "nightlife",
       title: "Nightlife Turnup Pass",
       tagline: "Lagos after dark, front of the line.",

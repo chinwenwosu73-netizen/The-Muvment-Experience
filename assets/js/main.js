@@ -103,15 +103,19 @@
   function cardArt(pkg) {
     const [deep, mid, glow] = pkg.palette || ["#1a1a1a", "#3a3a3a", "#c9a96e"];
     const art = el("div", { class: "card__art" });
+    // Colour artwork is always drawn; a photo, when present, sits on top.
+    // If the photo file is missing, it is removed and the artwork shows.
+    const bg = el("div", { class: "card__art-bg", "aria-hidden": "true" });
+    bg.style.background = `radial-gradient(120% 90% at 85% 10%, ${glow}55, transparent 55%),
+      radial-gradient(90% 80% at 10% 100%, ${mid}, transparent 70%),
+      linear-gradient(160deg, ${deep}, ${mid} 60%, ${deep})`;
+    art.append(bg, el("div", { class: "card__grain", "aria-hidden": "true" }));
+    art.append(el("span", { class: "card__art-word", "aria-hidden": "true", text: categoryName[pkg.category] }));
     if (pkg.image) {
-      art.append(el("img", { src: pkg.image, alt: fullTitle(pkg), loading: "lazy", decoding: "async" }));
-    } else {
-      const bg = el("div", { class: "card__art-bg", "aria-hidden": "true" });
-      bg.style.background = `radial-gradient(120% 90% at 85% 10%, ${glow}55, transparent 55%),
-        radial-gradient(90% 80% at 10% 100%, ${mid}, transparent 70%),
-        linear-gradient(160deg, ${deep}, ${mid} 60%, ${deep})`;
-      art.append(bg, el("div", { class: "card__grain", "aria-hidden": "true" }));
-      art.append(el("span", { class: "card__art-word", "aria-hidden": "true", text: categoryName[pkg.category] }));
+      const img = el("img", { src: pkg.image, alt: pkg.imageAlt || fullTitle(pkg), loading: "lazy", decoding: "async" });
+      img.addEventListener("load", () => art.classList.add("has-photo"));
+      img.addEventListener("error", () => img.remove());
+      art.append(img);
     }
     art.append(el("span", { class: "card__tag", text: categoryName[pkg.category] }));
     if (pkg.tier) art.append(el("span", { class: "card__tier", text: pkg.tier }));
