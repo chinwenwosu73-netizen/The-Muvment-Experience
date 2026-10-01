@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muvment Experience — Curated Premium Experiences in Lagos</title>
+  <meta name="description" content="Curated premium experiences in Lagos by Muvment: romance on the water, soft-life Saturdays, Afrocentric culture, executive off-sites and VIP nightlife. Request your booking in under a minute.">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Muvment Experience — Curated Premium Experiences">
+  <meta property="og:description" content="Nine curated Lagos experiences, handled end to end by the Muvment Concierge.">
+  <!-- TODO: add og:image once brand photography is ready, e.g. assets/img/og.jpg (1200×630). -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#experiences">Skip to experiences</a>
+
+  <header class="nav" data-nav>
+    <a class="nav__brand" href="#top" aria-label="Muvment Experience, back to top">
+      <span class="nav__mark">MUVMENT</span>
+      <span class="nav__sub">Experience</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#experiences">Experiences</a>
+      <a href="#how">How it works</a>
+      <a href="#partners">Partners</a>
+    </nav>
+    <a class="btn btn--ghost nav__cta" data-whatsapp data-track="whatsapp_nav" target="_blank" rel="noopener">Chat with Concierge</a>
+  </header>
+
+  <main id="top">
+    <!-- 1. Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true" data-hero-media>
+        <div class="hero__glow hero__glow--a"></div>
+        <div class="hero__glow hero__glow--b"></div>
+        <div class="hero__grain"></div>
+      </div>
+      <div class="hero__inner">
+        <p class="eyebrow reveal">Lagos · Phase 1 Collection</p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="line reveal">Curated</span>
+          <span class="line reveal"><em>premium</em></span>
+          <span class="line reveal">experiences</span>
+        </h1>
+        <div class="hero__foot reveal">
+          <p class="hero__lede">Nine hand-picked Lagos experiences — romance on the water, soft-life Saturdays, culture, executive off-sites and VIP nights. You choose. Our Concierge handles everything else.</p>
+          <a class="btn btn--primary" href="#experiences" data-track="hero_explore">Explore Experiences <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track" data-marquee="categories"></div>
+      </div>
+    </section>
+
+    <!-- 2. How it works -->
+    <section class="how" id="how" aria-labelledby="how-title">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2 class="display" id="how-title">Three steps to <em>seamless</em> luxury</h2>
+      </div>
+      <ol class="how__steps">
+        <li class="how__step reveal">
+          <span class="how__num">01</span>
+          <h3>Choose your experience</h3>
+          <p>Browse nine curated packages with every inclusion and price shown up front.</p>
+        </li>
+        <li class="how__step reveal">
+          <span class="how__num">02</span>
+          <h3>Request your booking</h3>
+          <p>Send your date and group size in under a minute — by form or WhatsApp.</p>
+        </li>
+        <li class="how__step reveal">
+          <span class="how__num">03</span>
+          <h3>Enjoy seamless luxury</h3>
+          <p>The Muvment Concierge confirms with our partners and takes care of the details.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 3. Catalog -->
+    <section class="catalog" id="experiences" aria-labelledby="catalog-title">
+      <div class="section-head section-head--row">
+        <div>
+          <p class="eyebrow">The collection</p>
+          <h2 class="display" id="catalog-title">Experiences</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filter by category" data-filters></div>
+      </div>
+      <div class="cards" data-cards aria-live="polite"></div>
+    </section>
+
+    <!-- 4. Partners -->
+    <section class="partners" id="partners" aria-labelledby="partners-title">
+      <p class="eyebrow" id="partners-title">In partnership with Lagos' finest</p>
+      <ul class="partners__list" data-partners></ul>
+    </section>
+
+    <!-- Closing call to action -->
+    <section class="closer" aria-labelledby="closer-title">
+      <h2 class="closer__title" id="closer-title">Your Lagos,<br><em>curated.</em></h2>
+      <div class="closer__actions">
+        <a class="btn btn--primary" href="#experiences" data-track="closer_explore">Explore Experiences</a>
+        <a class="btn btn--ghost" data-whatsapp data-track="whatsapp_closer" target="_blank" rel="noopener">Chat with Concierge</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 5. Footer -->
+  <footer class="footer">
+    <div class="footer__brand">
+      <span class="nav__mark">MUVMENT</span>
+      <span class="nav__sub">Experience</span>
+    </div>
+    <div class="footer__cols">
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a data-email></a></li>
+          <li><a data-phone></a></li>
+          <li><a data-whatsapp target="_blank" rel="noopener" data-track="whatsapp_footer">WhatsApp Concierge</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Muvment</h3>
+        <ul>
+          <li><a data-main-site target="_blank" rel="noopener">Main site</a></li>
+          <li><a data-instagram target="_blank" rel="noopener">Instagram</a></li>
+          <li><a data-privacy target="_blank" rel="noopener">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__legal">© <span data-year></span> Muvment. Experiences in Lagos, Nigeria. Prices in naira and subject to confirmation.</p>
+  </footer>
+
+  <!-- Booking request dialog -->
+  <dialog class="booking" data-booking aria-labelledby="booking-title">
+    <form class="booking__form" data-booking-form novalidate>
+      <div class="booking__head">
+        <div>
+          <p class="eyebrow">Request a booking</p>
+          <h2 id="booking-title" class="booking__title" data-booking-title>Your experience</h2>
+          <p class="booking__price" data-booking-price></p>
+        </div>
+        <button type="button" class="booking__close" data-booking-close aria-label="Close">×</button>
+      </div>
+
+      <div class="field">
+        <label for="f-package">Experience</label>
+        <select id="f-package" name="package" required data-package-select></select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-name">Full name</label>
+          <input id="f-name" name="name" autocomplete="name" required>
+          <p class="field__error" data-error-for="name"></p>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+          <p class="field__error" data-error-for="email"></p>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+234 …" required>
+          <p class="field__error" data-error-for="phone"></p>
+        </div>
+        <div class="field">
+          <label for="f-date">Preferred date</label>
+          <input id="f-date" name="date" type="date" required>
+          <p class="field__error" data-error-for="date"></p>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-size">Group size</label>
+        <input id="f-size" name="groupSize" type="number" min="1" max="100" value="2" inputmode="numeric" required>
+        <p class="field__error" data-error-for="groupSize"></p>
+      </div>
+
+      <p class="booking__estimate" data-estimate aria-live="polite"></p>
+
+      <button type="submit" class="btn btn--primary btn--block" data-submit>Send booking request</button>
+      <p class="booking__consent">We use these details only to arrange your booking. See our <a data-privacy target="_blank" rel="noopener">privacy policy</a>.</p>
+      <p class="booking__status" data-status role="alert"></p>
+    </form>
+
+    <div class="booking__done" data-booking-done hidden>
+      <p class="eyebrow">Request received</p>
+      <h2 class="booking__title">Thank you.</h2>
+      <p data-done-text></p>
+      <button type="button" class="btn btn--ghost" data-booking-close>Back to experiences</button>
+    </div>
+  </dialog>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
