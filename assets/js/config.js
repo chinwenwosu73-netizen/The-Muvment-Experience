@@ -62,7 +62,7 @@ window.MUVMENT_CONFIG = {
       ],
       price: 432000,
       priceBasis: "couple",
-      palette: ["#0d2a3a", "#1f5f73", "#c9a96e"],
+      palette: ["#1f4e5a", "#4f8a92", "#e6d3b0"],
     },
     {
       id: "artsy-couple",
@@ -76,7 +76,7 @@ window.MUVMENT_CONFIG = {
       ],
       price: 294000,
       priceBasis: "couple",
-      palette: ["#3a1d1a", "#a0533a", "#e8c9a0"],
+      palette: ["#8a4b36", "#c07a5a", "#f1dcc6"],
     },
     {
       id: "soft-life-saturday-regular",
@@ -92,7 +92,7 @@ window.MUVMENT_CONFIG = {
       price: 51600,
       priceBasis: "person",
       groupExample: { size: 8, total: 412800 },
-      palette: ["#2b2420", "#8a6a55", "#efd9c3"],
+      palette: ["#9c7f68", "#c8ab90", "#f5e9da"],
     },
     {
       id: "soft-life-saturday-premium",
@@ -111,7 +111,7 @@ window.MUVMENT_CONFIG = {
       priceBasis: "person",
       // No groupExample: the source's group-of-8 total doesn't match the
       // per-person price (PRD section 9). Add one once it's confirmed.
-      palette: ["#1e1712", "#6b4a32", "#d8b07a"],
+      palette: ["#6e5440", "#a9876a", "#efdcc2"],
     },
     {
       id: "afrocentric-culture-weekday",
@@ -125,7 +125,7 @@ window.MUVMENT_CONFIG = {
       ],
       price: 66600,
       priceBasis: "person",
-      palette: ["#231a10", "#8c5a1c", "#e3b25a"],
+      palette: ["#8a6326", "#c39a4f", "#f3dfb3"],
     },
     {
       id: "afrocentric-culture-sunday",
@@ -139,7 +139,7 @@ window.MUVMENT_CONFIG = {
       ],
       price: 175200,
       priceBasis: "couple",
-      palette: ["#1d0f0c", "#7a2a1c", "#e0894f"],
+      palette: ["#7a3a26", "#b5643f", "#f0c9a3"],
     },
     {
       id: "corporate-cafe-strategy",
@@ -154,7 +154,7 @@ window.MUVMENT_CONFIG = {
       price: 134595,
       priceBasis: "person",
       groupExample: { size: 8, total: 1076760 },
-      palette: ["#14181c", "#3d4a55", "#b9c4cc"],
+      palette: ["#3c4b55", "#7d8f99", "#e3e8ea"],
     },
     {
       id: "creative-ignition-off-site",
@@ -168,7 +168,7 @@ window.MUVMENT_CONFIG = {
       price: 50250,
       priceBasis: "person",
       groupExample: { size: 8, total: 402000 },
-      palette: ["#141a12", "#46573a", "#c5cf9a"],
+      palette: ["#4f5a3a", "#8a9466", "#e8e9cf"],
     },
     {
       id: "nightlife-turnup-pass",
@@ -181,7 +181,7 @@ window.MUVMENT_CONFIG = {
       ],
       price: 330000,
       priceBasis: "person",
-      palette: ["#0b0a14", "#3b2a6b", "#c08cff"],
+      palette: ["#3b2f5c", "#7a64a8", "#e4d9f2"],
     },
   ],
 
