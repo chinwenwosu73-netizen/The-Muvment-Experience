@@ -168,6 +168,7 @@ window.MUVMENT_CONFIG = {
     {
       id: "afrocentric-culture-sunday",
       images: [
+        { src: "assets/img/packages/new-afrika-shrine-concert.jpg", alt: "Live Afrobeat performance at the New Afrika Shrine, with a saxophonist, drummers and dancers on stage" },
         { src: "assets/img/packages/ile-eros-bar.jpg", alt: "ILÉ Eros bar glowing amber, with raffia pendant lights and gold wall plates" },
         { src: "assets/img/packages/ile-eros-dining-room.jpg", alt: "ILÉ Eros dining room with terracotta walls, woven panels and a sculptural tree centrepiece" },
         { src: "assets/img/packages/ile-eros-red-canopy.jpg", alt: "ILÉ Eros restaurant under a red ceiling installation, with patterned chairs and set tables" },
@@ -187,6 +188,10 @@ window.MUVMENT_CONFIG = {
     {
       id: "corporate-cafe-strategy",
       images: [
+        { src: "assets/img/packages/cafe-one-lounge.jpg", alt: "Café One lounge with a curved grey sofa, branded red and white cushions and a board game table" },
+        { src: "assets/img/packages/cafe-one-boardroom-tables.jpg", alt: "Café One meeting tables with red chairs beside a CREATIVE wall" },
+        { src: "assets/img/packages/cafe-one-workspace.jpg", alt: "Café One workspace with lounge seating, shared desks and the coffee bar" },
+        { src: "assets/img/packages/cafe-one-games-tables.jpg", alt: "Bright Café One floor with chess sets on white tables and red-backed chairs" },
         { src: "assets/img/packages/carven-gaming-arena.jpg", alt: "Carven gaming arena with rows of red and black gaming chairs and screens" },
         { src: "assets/img/packages/carven-racing-simulators.jpg", alt: "Carven racing simulators with steering wheels and bucket seats" },
       ],
