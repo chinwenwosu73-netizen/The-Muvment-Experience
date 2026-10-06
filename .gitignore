@@ -1,0 +1,5 @@
+# Local secrets and Vercel CLI state — never commit these.
+.env
+.env.*
+.vercel
+node_modules

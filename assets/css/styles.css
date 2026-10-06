@@ -507,6 +507,7 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; text-
 }
 .booking__estimate strong { color: var(--text); font: 700 1.15rem/1 var(--font-display); }
 .booking__estimate:empty { display: none; }
+.booking__trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .booking__consent { margin: 0; font-size: 0.78rem; color: var(--muted); }
 .booking__status { margin: 0; font-size: 0.9rem; color: var(--error); }
 .booking__status:empty { display: none; }

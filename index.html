@@ -184,6 +184,12 @@
         <p class="field__error" data-error-for="groupSize"></p>
       </div>
 
+      <!-- Spam trap: hidden from people, filled in by bots. -->
+      <div class="booking__trap" aria-hidden="true">
+        <label for="f-website">Website</label>
+        <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
       <p class="booking__estimate" data-estimate aria-live="polite"></p>
 
       <button type="submit" class="btn btn--primary btn--block" data-submit>Send booking request</button>

@@ -342,6 +342,7 @@
       groupSize,
       submittedAt: new Date().toISOString(),
       source: utmParams(),
+      website: form.elements.website.value,
     };
   }
 
@@ -375,27 +376,49 @@
 
     const request = buildRequest();
 
-    if (!booking.formEndpoint) {
+    const sendByEmail = (channel) => {
       window.location.href = mailtoFor(request);
-      track("form_submit", { package: request.packageId, channel: "mailto" });
+      track("form_submit", { package: request.packageId, channel });
       showDone(`Your email app should now open with your request for ${request.package} ready to send — just press Send. The Muvment Concierge will respond ${contact.responseTime}.`);
+    };
+
+    if (!booking.formEndpoint) {
+      sendByEmail("mailto");
       return;
     }
 
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending…";
     try {
-      const res = await fetch(booking.formEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...request, _subject: `Booking request — ${request.package}` }),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      track("form_submit", { package: request.packageId, channel: "form" });
-      showDone(`We've received your request for ${request.package}. The Muvment Concierge will contact you ${contact.responseTime} to confirm your booking.`);
-    } catch (err) {
-      status.textContent = "Sorry, your request didn't send. Please try again, or chat with the Concierge on WhatsApp.";
-      track("form_error", { package: request.packageId });
+      let res = null;
+      try {
+        res = await fetch(booking.formEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(request),
+        });
+      } catch (err) {
+        res = null; // offline, or no backend (site opened as a file)
+      }
+
+      if (res && res.ok) {
+        track("form_submit", { package: request.packageId, channel: "form" });
+        showDone(`We've received your request for ${request.package}. The Muvment Concierge will contact you ${contact.responseTime} to confirm your booking.`);
+      } else if (res && res.status === 400) {
+        // The server found a problem with a field: show it like the browser checks do.
+        const data = await res.json().catch(() => ({}));
+        if (data.field && form.elements[data.field] && data.field !== "package") {
+          setError(data.field, data.error);
+          form.elements[data.field].focus();
+        } else {
+          status.textContent = data.error || "Please check your details and try again.";
+        }
+        track("form_error", { package: request.packageId, reason: "invalid" });
+      } else {
+        // Backend missing or down: don't lose the lead, hand it to email instead.
+        track("form_error", { package: request.packageId, reason: res ? `http_${res.status}` : "network" });
+        sendByEmail("mailto_fallback");
+      }
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = "Send booking request";

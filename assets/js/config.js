@@ -23,11 +23,12 @@ window.MUVMENT_CONFIG = {
   },
 
   booking: {
-    // Where the lead form is POSTed as JSON. Works with Formspree
-    // (https://formspree.io → create a form → paste its URL here) or any
-    // endpoint that accepts JSON. Leave empty to fall back to opening the
+    // Where the lead form is POSTed as JSON. "/api/bookings" is this
+    // site's own backend (api/bookings.js), which saves each request to the
+    // Supabase database. If it can't be reached (for example when the site
+    // is opened as a plain file), the form falls back to opening the
     // visitor's email app with the request pre-written to contact.email.
-    formEndpoint: "",
+    formEndpoint: "/api/bookings",
   },
 
   // Optional full-screen hero video (mp4). Leave empty to use the
