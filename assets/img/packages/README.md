@@ -14,12 +14,11 @@ Put one photo per package in this folder, **named exactly as below**. Each photo
 | `afrocentric-culture-sunday.jpg` | Afrocentric Culture, Sunday | A live Afrobeat band on stage, with horns, warm lights and a crowd |
 | `corporate-cafe-strategy.jpg` | The Corporate Café Strategy | A small executive team in a bright, stylish café meeting, with pastries and coffee |
 | `creative-ignition-off-site.jpg` | The Creative Ignition Off-Site | A team in paintball gear celebrating, mid-laugh and energetic |
-| `nightlife-turnup-pass.jpg` | Nightlife Turnup Pass | A VIP table with bottle service and sparklers in a moody, upscale lounge |
 
 ## Where to get photos
 
-1. **Best: your partners' own photos.** Ask George Residence, ORÍKÌ Spa, ILÉ Eros, Zaza Lagos and the other venues for their official images, plus written permission to use them. Real venues sell better than stock photos.
+1. **Best: your partners' own photos.** Ask George Residence, ORÍKÌ Spa, ILÉ Eros and the other venues for their official images, plus written permission to use them. Real venues sell better than stock photos.
 2. **Free stock photos:** [Unsplash](https://unsplash.com) and [Pexels](https://pexels.com) are free for commercial use. Search terms like "Lagos", "Nigerian couple dinner", "Black women spa", "Afrobeat concert" and "African business team" give more authentic results. Choose photos of people who reflect your Lagos audience.
 3. **Your own shoot:** a half-day shoot across 3–4 partner venues would cover most packages.
 
-Keep the same feel across all nine: warm natural light and real moments rather than posed ones.
+Keep the same feel across all eight: warm natural light and real moments rather than posed ones.

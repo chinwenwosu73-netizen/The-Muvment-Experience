@@ -40,7 +40,6 @@ window.MUVMENT_CONFIG = {
     { id: "soft-life", name: "Soft Life" },
     { id: "culture", name: "Culture" },
     { id: "executive", name: "Executive" },
-    { id: "nightlife", name: "Nightlife" },
   ],
 
   /*
@@ -117,10 +116,8 @@ window.MUVMENT_CONFIG = {
         "George Residence — opulent suite with gourmet breakfast",
         "Private Cinema — private screening (groups only)",
       ],
-      price: 272850,
+      price: 300000,
       priceBasis: "person",
-      // No groupExample: the source's group-of-8 total doesn't match the
-      // per-person price (PRD section 9). Add one once it's confirmed.
       palette: ["#6e5440", "#a9876a", "#efdcc2"],
     },
     {
@@ -135,7 +132,7 @@ window.MUVMENT_CONFIG = {
         "ILÉ Eros — bespoke culinary journey",
         "Kalakuta Museum — guided immersion into Fela's legacy and Afrobeats history",
       ],
-      price: 66600,
+      price: 70000,
       priceBasis: "person",
       palette: ["#8a6326", "#c39a4f", "#f3dfb3"],
     },
@@ -151,7 +148,7 @@ window.MUVMENT_CONFIG = {
         "ILÉ Eros — bespoke culinary journey",
         "New Afrika Shrine — Sunday VIP live concert with VIP seating, concierge, palm wine, beverages, 2-course meal and traditional appetisers",
       ],
-      price: 175200,
+      price: 200000,
       priceBasis: "couple",
       palette: ["#7a3a26", "#b5643f", "#f0c9a3"],
     },
@@ -167,9 +164,9 @@ window.MUVMENT_CONFIG = {
         "Fired and Iced Restaurant — Pan-African executive group dinner",
         "Landmark Ecosystem Synergy Combo — 1-hour All Access Pass at Carven (console, dance, racing) plus Deluxe Adult Package at ArrowsDen Archery, POP Landmark (12 arrows, expert guidance)",
       ],
-      price: 134595,
+      price: 150000,
       priceBasis: "person",
-      groupExample: { size: 8, total: 1076760 },
+      groupExample: { size: 8, total: 1200000 },
       palette: ["#3c4b55", "#7d8f99", "#e3e8ea"],
     },
     {
@@ -183,27 +180,12 @@ window.MUVMENT_CONFIG = {
         "Leisure Sports Paintball — Group Package 1 (up to 10 players), full tactical gear, small chops from Autogirl",
         "Fired and Iced Restaurant — networking reception with crafted drinks and sharing platters",
       ],
-      price: 50250,
+      price: 55000,
       priceBasis: "person",
-      groupExample: { size: 8, total: 402000 },
+      groupExample: { size: 8, total: 440000 },
       palette: ["#4f5a3a", "#8a9466", "#e8e9cf"],
-    },
-    {
-      id: "nightlife-turnup-pass",
-      image: "assets/img/packages/nightlife-turnup-pass.jpg",
-      imageAlt: "A VIP lounge table with bottle service and sparklers at night",
-      category: "nightlife",
-      title: "Nightlife Turnup Pass",
-      tagline: "Lagos after dark, front of the line.",
-      includes: [
-        "Zaza Lagos — VIP table with signature premium bottle service",
-        "The Library Lagos — priority VIP access and late-night transition",
-      ],
-      price: 330000,
-      priceBasis: "person",
-      palette: ["#3b2f5c", "#7a64a8", "#e4d9f2"],
     },
   ],
 
-  partners: ["George Residence", "ORÍKÌ Spa", "ILÉ Eros", "Zaza Lagos", "Cafe One"],
+  partners: ["George Residence", "ORÍKÌ Spa", "ILÉ Eros", "Cafe One"],
 };
