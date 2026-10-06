@@ -152,6 +152,7 @@
 
     art.append(el("span", { class: "card__tag", text: categoryName[pkg.category] }));
     if (pkg.tier) art.append(el("span", { class: "card__tier", text: pkg.tier }));
+    if (imgs.length > 8) dots.classList.add("card__dots--many");
     if (imgs.length > 1) art.append(dots);
     return art;
   }

@@ -17,6 +17,7 @@ Still needed: one photo per package below, **named exactly as listed**. Each pho
 | Soft Life Saturday, Regular and Premium | `oriki-spa-couples-suite.jpg`, `oriki-spa-ivy-room.jpg`, `oriki-spa-treatment-room.jpg` (ORÍKÌ Spa) |
 | Artsy Couple and Soft Life Saturday, Premium | `george-residence-wood-suite.jpg`, `george-residence-cove-suite.jpg`, `george-residence-marble-suite.jpg` (George Residence) |
 | Soft Life Saturday Premium, Afrocentric Culture Weekday and Sunday | `ile-eros-dining-room.jpg`, `ile-eros-red-canopy.jpg`, `ile-eros-bar.jpg` (ILÉ Eros) |
+| Soft Life Saturday, Regular and Premium | `j-randle-royal-regalia.jpg`, `j-randle-masquerade-gallery.jpg`, `j-randle-egungun.jpg`, `j-randle-cowrie-crown.jpg` (J. Randle Centre) |
 | The Corporate Café Strategy | `carven-gaming-arena.jpg`, `carven-racing-simulators.jpg` (Carven) |
 
 A card can show several photos: list them under `images` in `assets/js/config.js`, and the card shows dots to switch between them.
