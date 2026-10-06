@@ -21,6 +21,7 @@ Still needed: one photo per package below, **named exactly as listed**. Each pho
 | The Corporate Café Strategy | `cafe-one-lounge.jpg`, `cafe-one-boardroom-tables.jpg`, `cafe-one-workspace.jpg`, `cafe-one-games-tables.jpg` (Café One) |
 | The Corporate Café Strategy | `arrowsden-archery-archer.jpg`, `arrowsden-archery-target.jpg` (ArrowsDen Archery) |
 | The Creative Ignition Off-Site | `paintball-action.jpg`, `paintball-team.jpg`, `paintball-kneeling-shot.jpg` (Leisure Sports Paintball) |
+| Artsy Couple, Soft Life Saturday Regular, The Corporate Café Strategy, The Creative Ignition Off-Site | `fired-and-iced-garden-terrace.jpg`, `fired-and-iced-sharing-platters.jpg`, `fired-and-iced-dishes.jpg` (Fired and Iced Restaurant) |
 | The Corporate Café Strategy | `carven-gaming-arena.jpg`, `carven-racing-simulators.jpg` (Carven) |
 
 A card can show several photos: list them under `images` in `assets/js/config.js`, and the card shows dots to switch between them.
