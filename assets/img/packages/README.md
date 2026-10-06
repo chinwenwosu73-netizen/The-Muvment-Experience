@@ -7,7 +7,6 @@ Still needed: one photo per package below, **named exactly as listed**. Each pho
 | File name | Package | What the photo should show |
 |---|---|---|
 | `executive-oceanic-romance.jpg` | The Executive Oceanic Romance | A couple on a private boat on the Lagos lagoon at golden hour, with wine glasses and a dinner table on deck |
-| `creative-ignition-off-site.jpg` | The Creative Ignition Off-Site | A team in paintball gear celebrating, mid-laugh and energetic |
 
 ## Already added
 
@@ -20,6 +19,8 @@ Still needed: one photo per package below, **named exactly as listed**. Each pho
 | Soft Life Saturday, Regular and Premium | `j-randle-royal-regalia.jpg`, `j-randle-masquerade-gallery.jpg`, `j-randle-egungun.jpg`, `j-randle-cowrie-crown.jpg` (J. Randle Centre) |
 | Afrocentric Culture, Sunday | `new-afrika-shrine-concert.jpg` (New Afrika Shrine) |
 | The Corporate Café Strategy | `cafe-one-lounge.jpg`, `cafe-one-boardroom-tables.jpg`, `cafe-one-workspace.jpg`, `cafe-one-games-tables.jpg` (Café One) |
+| The Corporate Café Strategy | `arrowsden-archery-archer.jpg`, `arrowsden-archery-target.jpg` (ArrowsDen Archery) |
+| The Creative Ignition Off-Site | `paintball-action.jpg`, `paintball-team.jpg`, `paintball-kneeling-shot.jpg` (Leisure Sports Paintball) |
 | The Corporate Café Strategy | `carven-gaming-arena.jpg`, `carven-racing-simulators.jpg` (Carven) |
 
 A card can show several photos: list them under `images` in `assets/js/config.js`, and the card shows dots to switch between them.
