@@ -111,14 +111,48 @@
       linear-gradient(160deg, ${deep}, ${mid} 60%, ${deep})`;
     art.append(bg, el("div", { class: "card__grain", "aria-hidden": "true" }));
     art.append(el("span", { class: "card__art-word", "aria-hidden": "true", text: categoryName[pkg.category] }));
-    if (pkg.image) {
-      const img = el("img", { src: pkg.image, alt: pkg.imageAlt || fullTitle(pkg), loading: "lazy", decoding: "async" });
+    const photos = pkg.images || (pkg.image ? [{ src: pkg.image, alt: pkg.imageAlt }] : []);
+    const imgs = photos.map((photo, i) => {
+      const img = el("img", { src: photo.src, alt: photo.alt || fullTitle(pkg), loading: "lazy", decoding: "async", class: i === 0 ? "is-active" : null });
       img.addEventListener("load", () => art.classList.add("has-photo"));
-      img.addEventListener("error", () => img.remove());
-      art.append(img);
+      img.addEventListener("error", () => dropPhoto(img));
+      return img;
+    });
+    art.append(...imgs);
+
+    // Several photos: dots to switch, and a tap on the photo shows the next.
+    const dots = el("div", { class: "card__dots" });
+    if (imgs.length > 1) {
+      imgs.forEach((img, i) => {
+        const dot = el("button", { type: "button", class: "card__dot", "aria-label": `Show photo ${i + 1} of ${imgs.length}`, "aria-current": String(i === 0) });
+        dot.addEventListener("click", () => show(img));
+        img.dot = dot;
+        dots.append(dot);
+      });
+      art.addEventListener("click", (e) => {
+        if (e.target.tagName !== "IMG") return;
+        const live = imgs.filter((im) => im.isConnected);
+        show(live[(live.indexOf(e.target) + 1) % live.length]);
+      });
     }
+    function show(img) {
+      imgs.forEach((im) => {
+        im.classList.toggle("is-active", im === img);
+        if (im.dot) im.dot.setAttribute("aria-current", String(im === img));
+      });
+    }
+    function dropPhoto(img) {
+      const wasActive = img.classList.contains("is-active");
+      img.remove();
+      if (img.dot) img.dot.remove();
+      const live = imgs.filter((im) => im.isConnected);
+      if (wasActive && live.length) show(live[0]);
+      if (live.length < 2) dots.remove();
+    }
+
     art.append(el("span", { class: "card__tag", text: categoryName[pkg.category] }));
     if (pkg.tier) art.append(el("span", { class: "card__tier", text: pkg.tier }));
+    if (imgs.length > 1) art.append(dots);
     return art;
   }
 
