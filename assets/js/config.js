@@ -73,6 +73,9 @@ window.MUVMENT_CONFIG = {
       images: [
         { src: "assets/img/packages/artsy-couple-paint-and-sip.jpg", alt: "Guests laughing and sipping wine as they paint portraits at a CeraCerni's Art Hub session" },
         { src: "assets/img/packages/artsy-couple-art-hub.jpg", alt: "CeraCerni's Art Hub studio with graffiti-covered walls and a painted ocean floor" },
+        { src: "assets/img/packages/george-residence-wood-suite.jpg", alt: "George Residence suite with a velvet headboard, wood-panelled wall and globe pendant lights" },
+        { src: "assets/img/packages/george-residence-cove-suite.jpg", alt: "George Residence suite with cove lighting, a king bed and a towel swan" },
+        { src: "assets/img/packages/george-residence-marble-suite.jpg", alt: "Spacious George Residence suite with marble floors, a work desk and a walk-in wardrobe" },
       ],
       category: "artsy-couple",
       title: "Artsy Couple",
@@ -110,6 +113,9 @@ window.MUVMENT_CONFIG = {
     {
       id: "soft-life-saturday-premium",
       images: [
+        { src: "assets/img/packages/george-residence-wood-suite.jpg", alt: "George Residence suite with a velvet headboard, wood-panelled wall and globe pendant lights" },
+        { src: "assets/img/packages/george-residence-cove-suite.jpg", alt: "George Residence suite with cove lighting, a king bed and a towel swan" },
+        { src: "assets/img/packages/george-residence-marble-suite.jpg", alt: "Spacious George Residence suite with marble floors, a work desk and a walk-in wardrobe" },
         { src: "assets/img/packages/oriki-spa-ivy-room.jpg", alt: "ORÍKÌ Spa treatment room with an ivy-framed mirror and warm wood panelling" },
         { src: "assets/img/packages/oriki-spa-treatment-room.jpg", alt: "ORÍKÌ Spa treatment bed with a towel swan under soft cove lighting" },
         { src: "assets/img/packages/oriki-spa-couples-suite.jpg", alt: "ORÍKÌ Spa double treatment room with robes, rolled towels and candles" },
