@@ -40,18 +40,21 @@ window.MUVMENT_CONFIG = {
     { id: "soft-life", name: "Soft Life" },
     { id: "culture", name: "Culture" },
     { id: "executive", name: "Executive" },
-    { id: "nightlife", name: "Nightlife" },
   ],
 
   /*
    * priceBasis is one of: "person", "couple".
    * groupExample (optional) shows a quoted total for a group size.
-   * image (optional) is a path such as "assets/img/artsy-couple.jpg";
-   * without one, the card shows its colour artwork instead.
+   * image is the package photo. Drop a file with exactly that name into
+   * assets/img/packages/ and it appears on the card; until then the card
+   * shows its colour artwork. imageAlt describes the photo for screen
+   * readers. Landscape, about 1600×1200 px, under 400 KB works best.
    */
   packages: [
     {
       id: "executive-oceanic-romance",
+      image: "assets/img/packages/executive-oceanic-romance.jpg",
+      imageAlt: "A couple sharing dinner and wine aboard a private boat on the Lagos lagoon at sunset",
       category: "romance",
       title: "The Executive Oceanic Romance",
       tagline: "A private evening on the water.",
@@ -66,6 +69,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "artsy-couple",
+      image: "assets/img/packages/artsy-couple.jpg",
+      imageAlt: "A couple laughing at a pottery wheel during a paint-and-sip session",
       category: "artsy-couple",
       title: "Artsy Couple",
       tagline: "Create, dine and stay in style.",
@@ -80,6 +85,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "soft-life-saturday-regular",
+      image: "assets/img/packages/soft-life-saturday-regular.jpg",
+      imageAlt: "Friends relaxing together with pedicures at a luxury spa",
       category: "soft-life",
       tier: "Regular",
       title: "Soft Life Saturday",
@@ -96,6 +103,8 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "soft-life-saturday-premium",
+      image: "assets/img/packages/soft-life-saturday-premium.jpg",
+      imageAlt: "A serene luxury hotel suite with a soaking tub and breakfast tray",
       category: "soft-life",
       tier: "Premium",
       title: "Soft Life Saturday",
@@ -107,14 +116,14 @@ window.MUVMENT_CONFIG = {
         "George Residence — opulent suite with gourmet breakfast",
         "Private Cinema — private screening (groups only)",
       ],
-      price: 272850,
+      price: 300000,
       priceBasis: "person",
-      // No groupExample: the source's group-of-8 total doesn't match the
-      // per-person price (PRD section 9). Add one once it's confirmed.
       palette: ["#6e5440", "#a9876a", "#efdcc2"],
     },
     {
       id: "afrocentric-culture-weekday",
+      image: "assets/img/packages/afrocentric-culture-weekday.jpg",
+      imageAlt: "Guests on a guided tour of artworks celebrating Fela and Afrobeats history",
       category: "culture",
       tier: "Weekday",
       title: "Afrocentric Culture",
@@ -123,12 +132,14 @@ window.MUVMENT_CONFIG = {
         "ILÉ Eros — bespoke culinary journey",
         "Kalakuta Museum — guided immersion into Fela's legacy and Afrobeats history",
       ],
-      price: 66600,
+      price: 70000,
       priceBasis: "person",
       palette: ["#8a6326", "#c39a4f", "#f3dfb3"],
     },
     {
       id: "afrocentric-culture-sunday",
+      image: "assets/img/packages/afrocentric-culture-sunday.jpg",
+      imageAlt: "A live Afrobeat band performing on stage to a VIP crowd",
       category: "culture",
       tier: "Sunday",
       title: "Afrocentric Culture",
@@ -137,12 +148,14 @@ window.MUVMENT_CONFIG = {
         "ILÉ Eros — bespoke culinary journey",
         "New Afrika Shrine — Sunday VIP live concert with VIP seating, concierge, palm wine, beverages, 2-course meal and traditional appetisers",
       ],
-      price: 175200,
+      price: 200000,
       priceBasis: "couple",
       palette: ["#7a3a26", "#b5643f", "#f0c9a3"],
     },
     {
       id: "corporate-cafe-strategy",
+      image: "assets/img/packages/corporate-cafe-strategy.jpg",
+      imageAlt: "An executive team in a bright café boardroom over pastries and coffee",
       category: "executive",
       title: "The Corporate Café Strategy",
       tagline: "Plan the quarter. Then play.",
@@ -151,13 +164,15 @@ window.MUVMENT_CONFIG = {
         "Fired and Iced Restaurant — Pan-African executive group dinner",
         "Landmark Ecosystem Synergy Combo — 1-hour All Access Pass at Carven (console, dance, racing) plus Deluxe Adult Package at ArrowsDen Archery, POP Landmark (12 arrows, expert guidance)",
       ],
-      price: 134595,
+      price: 150000,
       priceBasis: "person",
-      groupExample: { size: 8, total: 1076760 },
+      groupExample: { size: 8, total: 1200000 },
       palette: ["#3c4b55", "#7d8f99", "#e3e8ea"],
     },
     {
       id: "creative-ignition-off-site",
+      image: "assets/img/packages/creative-ignition-off-site.jpg",
+      imageAlt: "A team in tactical gear celebrating after a paintball match",
       category: "executive",
       title: "The Creative Ignition Off-Site",
       tagline: "Team bonding with a competitive edge.",
@@ -165,25 +180,12 @@ window.MUVMENT_CONFIG = {
         "Leisure Sports Paintball — Group Package 1 (up to 10 players), full tactical gear, small chops from Autogirl",
         "Fired and Iced Restaurant — networking reception with crafted drinks and sharing platters",
       ],
-      price: 50250,
+      price: 55000,
       priceBasis: "person",
-      groupExample: { size: 8, total: 402000 },
+      groupExample: { size: 8, total: 440000 },
       palette: ["#4f5a3a", "#8a9466", "#e8e9cf"],
-    },
-    {
-      id: "nightlife-turnup-pass",
-      category: "nightlife",
-      title: "Nightlife Turnup Pass",
-      tagline: "Lagos after dark, front of the line.",
-      includes: [
-        "Zaza Lagos — VIP table with signature premium bottle service",
-        "The Library Lagos — priority VIP access and late-night transition",
-      ],
-      price: 330000,
-      priceBasis: "person",
-      palette: ["#3b2f5c", "#7a64a8", "#e4d9f2"],
     },
   ],
 
-  partners: ["George Residence", "ORÍKÌ Spa", "ILÉ Eros", "Zaza Lagos", "Cafe One"],
+  partners: ["George Residence", "ORÍKÌ Spa", "ILÉ Eros", "Cafe One"],
 };

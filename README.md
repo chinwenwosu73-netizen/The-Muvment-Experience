@@ -1,6 +1,6 @@
 # The Muvment Experience
 
-Muvment Experience is a standalone, premium landing page that showcases 9 curated Phase 1 experience packages across 6 categories in Lagos and captures booking requests for Muvment's operations team. It sits outside the main Muvment app, so the booking flow is deliberately lightweight: enquiry in, operations follows up.
+Muvment Experience is a standalone, premium landing page that showcases 8 curated Phase 1 experience packages across 5 categories in Lagos and captures booking requests for Muvment's operations team. It sits outside the main Muvment app, so the booking flow is deliberately lightweight: enquiry in, operations follows up.
 
 The full requirements are in [`docs/Muvment_Experience_PRD.pdf`](docs/Muvment_Experience_PRD.pdf).
 
@@ -8,7 +8,7 @@ The full requirements are in [`docs/Muvment_Experience_PRD.pdf`](docs/Muvment_Ex
 
 1. **Hero:** oversized headline and an "Explore Experiences" button.
 2. **How it works:** three steps, from choosing an experience to the Concierge handling it.
-3. **Experiences:** all 9 packages with their inclusions, prices and category filters.
+3. **Experiences:** all 8 packages with their inclusions, prices and category filters.
 4. **Partners:** the premium partner names.
 5. **Footer:** contact details, social links and the privacy policy.
 
@@ -31,7 +31,7 @@ Everything editable is in **`assets/js/config.js`**:
 | Where booking requests go | `booking.formEndpoint` (see below) |
 | A package's name, inclusions or price | that package in `packages` |
 | Partner names | `partners` |
-| Package photos | add the image to `assets/img/` and set `image: "assets/img/your-photo.jpg"` on the package |
+| Package photos | drop the photo into `assets/img/packages/` using the file name listed in that folder's README |
 | Hero video | set `heroVideo: "assets/video/hero.mp4"` |
 
 ### Must do before launch
@@ -40,7 +40,7 @@ Everything editable is in **`assets/js/config.js`**:
 - [ ] Set `booking.formEndpoint` so requests go straight to the operations inbox. Create a free form at [Formspree](https://formspree.io), copy its URL (`https://formspree.io/f/…`) and paste it in. Until then, the form opens the visitor's email app with the request already written.
 - [ ] Add package photography and an `og:image` for link previews.
 - [ ] Add your analytics snippet (Google Analytics or Tag Manager) to `index.html`. These events are already sent: `cta_book`, `booking_open`, `form_submit`, `whatsapp_card`, `whatsapp_nav`, `filter_category`.
-- [ ] Resolve the open questions in PRD section 9. One example: the Soft Life Premium group total, which is not shown until it's confirmed.
+- [ ] Resolve the remaining open questions in PRD section 9.
 
 ## Publishing
 
