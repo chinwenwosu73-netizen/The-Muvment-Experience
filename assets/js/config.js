@@ -119,6 +119,9 @@ window.MUVMENT_CONFIG = {
         { src: "assets/img/packages/oriki-spa-ivy-room.jpg", alt: "ORÍKÌ Spa treatment room with an ivy-framed mirror and warm wood panelling" },
         { src: "assets/img/packages/oriki-spa-treatment-room.jpg", alt: "ORÍKÌ Spa treatment bed with a towel swan under soft cove lighting" },
         { src: "assets/img/packages/oriki-spa-couples-suite.jpg", alt: "ORÍKÌ Spa double treatment room with robes, rolled towels and candles" },
+        { src: "assets/img/packages/ile-eros-dining-room.jpg", alt: "ILÉ Eros dining room with terracotta walls, woven panels and a sculptural tree centrepiece" },
+        { src: "assets/img/packages/ile-eros-red-canopy.jpg", alt: "ILÉ Eros restaurant under a red ceiling installation, with patterned chairs and set tables" },
+        { src: "assets/img/packages/ile-eros-bar.jpg", alt: "ILÉ Eros bar glowing amber, with raffia pendant lights and gold wall plates" },
       ],
       category: "soft-life",
       tier: "Premium",
@@ -137,8 +140,11 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "afrocentric-culture-weekday",
-      image: "assets/img/packages/afrocentric-culture-weekday.jpg",
-      imageAlt: "Guests on a guided tour of artworks celebrating Fela and Afrobeats history",
+      images: [
+        { src: "assets/img/packages/ile-eros-dining-room.jpg", alt: "ILÉ Eros dining room with terracotta walls, woven panels and a sculptural tree centrepiece" },
+        { src: "assets/img/packages/ile-eros-red-canopy.jpg", alt: "ILÉ Eros restaurant under a red ceiling installation, with patterned chairs and set tables" },
+        { src: "assets/img/packages/ile-eros-bar.jpg", alt: "ILÉ Eros bar glowing amber, with raffia pendant lights and gold wall plates" },
+      ],
       category: "culture",
       tier: "Weekday",
       title: "Afrocentric Culture",
@@ -153,8 +159,11 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "afrocentric-culture-sunday",
-      image: "assets/img/packages/afrocentric-culture-sunday.jpg",
-      imageAlt: "A live Afrobeat band performing on stage to a VIP crowd",
+      images: [
+        { src: "assets/img/packages/ile-eros-bar.jpg", alt: "ILÉ Eros bar glowing amber, with raffia pendant lights and gold wall plates" },
+        { src: "assets/img/packages/ile-eros-dining-room.jpg", alt: "ILÉ Eros dining room with terracotta walls, woven panels and a sculptural tree centrepiece" },
+        { src: "assets/img/packages/ile-eros-red-canopy.jpg", alt: "ILÉ Eros restaurant under a red ceiling installation, with patterned chairs and set tables" },
+      ],
       category: "culture",
       tier: "Sunday",
       title: "Afrocentric Culture",
@@ -169,8 +178,10 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "corporate-cafe-strategy",
-      image: "assets/img/packages/corporate-cafe-strategy.jpg",
-      imageAlt: "An executive team in a bright café boardroom over pastries and coffee",
+      images: [
+        { src: "assets/img/packages/carven-gaming-arena.jpg", alt: "Carven gaming arena with rows of red and black gaming chairs and screens" },
+        { src: "assets/img/packages/carven-racing-simulators.jpg", alt: "Carven racing simulators with steering wheels and bucket seats" },
+      ],
       category: "executive",
       title: "The Corporate Café Strategy",
       tagline: "Plan the quarter. Then play.",
