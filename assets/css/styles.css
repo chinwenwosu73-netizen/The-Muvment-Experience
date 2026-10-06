@@ -307,6 +307,11 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; text-
   transition: width 0.3s var(--ease), background 0.3s var(--ease);
 }
 .card__dot[aria-current="true"]::before { width: 22px; background: #ffffff; }
+/* Many photos: narrower dots so the row still fits on a phone. */
+.card__dots--many { gap: 0; }
+.card__dots--many .card__dot { width: 20px; }
+.card__dots--many .card__dot::before { width: 6px; height: 6px; }
+.card__dots--many .card__dot[aria-current="true"]::before { width: 14px; }
 .card__art.has-photo::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, rgba(28, 24, 19, 0.28) 0%, transparent 35%, transparent 75%, rgba(28, 24, 19, 0.25) 100%);
