@@ -7,13 +7,19 @@ Put one photo per package in this folder, **named exactly as below**. Each photo
 | File name | Package | What the photo should show |
 |---|---|---|
 | `executive-oceanic-romance.jpg` | The Executive Oceanic Romance | A couple on a private boat on the Lagos lagoon at golden hour, with wine glasses and a dinner table on deck |
-| `artsy-couple.jpg` | Artsy Couple | A couple laughing together at a pottery wheel or a paint-and-sip session, hands in clay |
-| `soft-life-saturday-regular.jpg` | Soft Life Saturday, Regular | Friends in robes enjoying pedicures at a calm, elegant spa |
-| `soft-life-saturday-premium.jpg` | Soft Life Saturday, Premium | A luxury suite with a soaking tub, fresh flowers and a breakfast tray; a manicure close-up also works |
 | `afrocentric-culture-weekday.jpg` | Afrocentric Culture, Weekday | A guided museum moment with Fela and Afrobeats art, or a beautifully plated Nigerian tasting dish |
 | `afrocentric-culture-sunday.jpg` | Afrocentric Culture, Sunday | A live Afrobeat band on stage, with horns, warm lights and a crowd |
 | `corporate-cafe-strategy.jpg` | The Corporate Café Strategy | A small executive team in a bright, stylish café meeting, with pastries and coffee |
 | `creative-ignition-off-site.jpg` | The Creative Ignition Off-Site | A team in paintball gear celebrating, mid-laugh and energetic |
+
+## Already added
+
+| Package | Photos (venue) |
+|---|---|
+| Artsy Couple | `artsy-couple-paint-and-sip.jpg`, `artsy-couple-art-hub.jpg` (CeraCerni's Art Hub) |
+| Soft Life Saturday, Regular and Premium | `oriki-spa-couples-suite.jpg`, `oriki-spa-ivy-room.jpg`, `oriki-spa-treatment-room.jpg` (ORÍKÌ Spa) |
+
+A card can show several photos: list them under `images` in `assets/js/config.js`, and the card shows dots to switch between them.
 
 ## Where to get photos
 

@@ -48,7 +48,8 @@ window.MUVMENT_CONFIG = {
    * image is the package photo. Drop a file with exactly that name into
    * assets/img/packages/ and it appears on the card; until then the card
    * shows its colour artwork. imageAlt describes the photo for screen
-   * readers. Landscape, about 1600×1200 px, under 400 KB works best.
+   * readers. For several photos on one card, use images instead:
+   * a list of { src, alt } — the card shows dots to switch between them. Landscape, about 1600×1200 px, under 400 KB works best.
    */
   packages: [
     {
@@ -69,8 +70,10 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "artsy-couple",
-      image: "assets/img/packages/artsy-couple.jpg",
-      imageAlt: "A couple laughing at a pottery wheel during a paint-and-sip session",
+      images: [
+        { src: "assets/img/packages/artsy-couple-paint-and-sip.jpg", alt: "Guests laughing and sipping wine as they paint portraits at a CeraCerni's Art Hub session" },
+        { src: "assets/img/packages/artsy-couple-art-hub.jpg", alt: "CeraCerni's Art Hub studio with graffiti-covered walls and a painted ocean floor" },
+      ],
       category: "artsy-couple",
       title: "Artsy Couple",
       tagline: "Create, dine and stay in style.",
@@ -85,8 +88,11 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "soft-life-saturday-regular",
-      image: "assets/img/packages/soft-life-saturday-regular.jpg",
-      imageAlt: "Friends relaxing together with pedicures at a luxury spa",
+      images: [
+        { src: "assets/img/packages/oriki-spa-couples-suite.jpg", alt: "ORÍKÌ Spa double treatment room with robes, rolled towels and candles" },
+        { src: "assets/img/packages/oriki-spa-ivy-room.jpg", alt: "ORÍKÌ Spa treatment room with an ivy-framed mirror and warm wood panelling" },
+        { src: "assets/img/packages/oriki-spa-treatment-room.jpg", alt: "ORÍKÌ Spa treatment bed with a towel swan under soft cove lighting" },
+      ],
       category: "soft-life",
       tier: "Regular",
       title: "Soft Life Saturday",
@@ -103,8 +109,11 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "soft-life-saturday-premium",
-      image: "assets/img/packages/soft-life-saturday-premium.jpg",
-      imageAlt: "A serene luxury hotel suite with a soaking tub and breakfast tray",
+      images: [
+        { src: "assets/img/packages/oriki-spa-ivy-room.jpg", alt: "ORÍKÌ Spa treatment room with an ivy-framed mirror and warm wood panelling" },
+        { src: "assets/img/packages/oriki-spa-treatment-room.jpg", alt: "ORÍKÌ Spa treatment bed with a towel swan under soft cove lighting" },
+        { src: "assets/img/packages/oriki-spa-couples-suite.jpg", alt: "ORÍKÌ Spa double treatment room with robes, rolled towels and candles" },
+      ],
       category: "soft-life",
       tier: "Premium",
       title: "Soft Life Saturday",
