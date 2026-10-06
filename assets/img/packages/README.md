@@ -16,8 +16,9 @@ Put one photo per package in this folder, **named exactly as below**. Each photo
 
 | Package | Photos (venue) |
 |---|---|
-| Artsy Couple | `artsy-couple-paint-and-sip.jpg`, `artsy-couple-art-hub.jpg` (CeraCerni's Art Hub) |
+| Artsy Couple | `artsy-couple-paint-and-sip.jpg`, `artsy-couple-art-hub.jpg` (CeraCerni's Art Hub), plus the three George Residence photos |
 | Soft Life Saturday, Regular and Premium | `oriki-spa-couples-suite.jpg`, `oriki-spa-ivy-room.jpg`, `oriki-spa-treatment-room.jpg` (ORÍKÌ Spa) |
+| Artsy Couple and Soft Life Saturday, Premium | `george-residence-wood-suite.jpg`, `george-residence-cove-suite.jpg`, `george-residence-marble-suite.jpg` (George Residence) |
 
 A card can show several photos: list them under `images` in `assets/js/config.js`, and the card shows dots to switch between them.
 
