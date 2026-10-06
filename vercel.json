@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/bookings.js": {
+      "includeFiles": "assets/js/config.js"
+    }
+  }
+}

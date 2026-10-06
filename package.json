@@ -1,0 +1,8 @@
+{
+  "name": "the-muvment-experience",
+  "private": true,
+  "description": "Muvment Experience landing page and booking backend",
+  "scripts": {
+    "test": "node --test"
+  }
+}
