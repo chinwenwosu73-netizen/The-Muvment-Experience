@@ -194,6 +194,8 @@ window.MUVMENT_CONFIG = {
         { src: "assets/img/packages/cafe-one-games-tables.jpg", alt: "Bright Café One floor with chess sets on white tables and red-backed chairs" },
         { src: "assets/img/packages/carven-gaming-arena.jpg", alt: "Carven gaming arena with rows of red and black gaming chairs and screens" },
         { src: "assets/img/packages/carven-racing-simulators.jpg", alt: "Carven racing simulators with steering wheels and bucket seats" },
+        { src: "assets/img/packages/arrowsden-archery-archer.jpg", alt: "An archer drawing a recurve bow at the ArrowsDen Archery outdoor range" },
+        { src: "assets/img/packages/arrowsden-archery-target.jpg", alt: "ArrowsDen Archery indoor lane with a target board and branded banner" },
       ],
       category: "executive",
       title: "The Corporate Café Strategy",
@@ -210,8 +212,11 @@ window.MUVMENT_CONFIG = {
     },
     {
       id: "creative-ignition-off-site",
-      image: "assets/img/packages/creative-ignition-off-site.jpg",
-      imageAlt: "A team in tactical gear celebrating after a paintball match",
+      images: [
+        { src: "assets/img/packages/paintball-action.jpg", alt: "A paintball player in full tactical gear aiming from behind an inflatable bunker" },
+        { src: "assets/img/packages/paintball-team.jpg", alt: "A paintball team in masks and vests posing among tyre barriers at Leisure Sports Paintball, Landmark" },
+        { src: "assets/img/packages/paintball-kneeling-shot.jpg", alt: "A player kneeling and firing between inflatable bunkers at Leisure Sports Paintball" },
+      ],
       category: "executive",
       title: "The Creative Ignition Off-Site",
       tagline: "Team bonding with a competitive edge.",
