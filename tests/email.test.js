@@ -29,6 +29,8 @@ function fakeTransport({ fail = [] } = {}) {
 }
 
 test.beforeEach(() => {
+  delete process.env.BREVO_API_KEY;
+  delete process.env.SENDER_EMAIL;
   process.env.GMAIL_USER = "muvment@gmail.com";
   process.env.GMAIL_APP_PASSWORD = "abcd efgh ijkl mnop";
   delete process.env.ADMIN_EMAIL;
@@ -92,4 +94,50 @@ test("one failed email doesn't stop the other or throw", async () => {
 test("skips quietly when Gmail isn't configured", async () => {
   delete process.env.GMAIL_USER;
   assert.deepEqual(await sendBookingEmails(booking), { customer: "skipped", admin: "skipped" });
+});
+
+test("Brevo: sends both emails through the Brevo API", async () => {
+  process.env.BREVO_API_KEY = "xkeysib-test";
+  process.env.SENDER_EMAIL = "chinwe@gmail.com";
+  process.env.ADMIN_EMAIL = "ops@example.com, owner@example.com";
+  delete process.env.GMAIL_USER;
+  const calls = [];
+  global.fetch = async (url, opts) => {
+    calls.push({ url, headers: opts.headers, body: JSON.parse(opts.body) });
+    return { ok: true, status: 201, json: async () => ({ messageId: "m" }) };
+  };
+  const result = await sendBookingEmails(booking, { contact: {} });
+  assert.deepEqual(result, { customer: "sent", admin: "sent" });
+  assert.equal(calls.length, 2);
+  for (const c of calls) {
+    assert.equal(c.url, "https://api.brevo.com/v3/smtp/email");
+    assert.equal(c.headers["api-key"], "xkeysib-test");
+    assert.deepEqual(c.body.sender, { email: "chinwe@gmail.com", name: "Muvment Experience" });
+    assert.ok(c.body.htmlContent.includes("Artsy Couple"));
+    assert.ok(c.body.textContent.includes("Artsy Couple"));
+  }
+  const [toCustomer, toAdmin] = calls.map((c) => c.body);
+  assert.deepEqual(toCustomer.to, [{ email: "ada@example.com" }]);
+  assert.deepEqual(toCustomer.replyTo, { email: "ops@example.com" });
+  assert.deepEqual(toAdmin.to, [{ email: "ops@example.com" }, { email: "owner@example.com" }]);
+  assert.deepEqual(toAdmin.replyTo, { email: "ada@example.com", name: "Ada <b>Obi</b>" });
+});
+
+test("Brevo: an API error is reported as failed, not thrown", async () => {
+  process.env.BREVO_API_KEY = "xkeysib-test";
+  process.env.SENDER_EMAIL = "chinwe@gmail.com";
+  global.fetch = async () => ({ ok: false, status: 401, text: async () => "unauthorized" });
+  const orig = console.error; console.error = () => {};
+  const result = await sendBookingEmails(booking);
+  console.error = orig;
+  assert.deepEqual(result, { customer: "failed", admin: "failed" });
+});
+
+test("Brevo is preferred over Gmail when both are set", async () => {
+  process.env.BREVO_API_KEY = "xkeysib-test";
+  process.env.SENDER_EMAIL = "chinwe@gmail.com";
+  let used = false;
+  global.fetch = async () => { used = true; return { ok: true, json: async () => ({}) }; };
+  await sendBookingEmails(booking);
+  assert.ok(used);
 });
