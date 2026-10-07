@@ -1,4 +1,4 @@
-// Run with: npm test   (Node 20+, no installs needed)
+// Run with: npm install, then npm test   (Node 20+)
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const handler = require("../api/bookings.js");
@@ -46,6 +46,7 @@ function mockSupabase() {
 test.beforeEach(() => {
   process.env.SUPABASE_URL = "https://example.supabase.co/";
   process.env.SUPABASE_SECRET_KEY = "sb_secret_test";
+  delete process.env.GMAIL_USER; // no real email in these tests
 });
 
 test("saves a valid booking with the server-side price", async () => {
@@ -81,6 +82,7 @@ test("legacy JWT keys are also sent as a Bearer token", async () => {
 for (const [field, overrides] of [
   ["package", { packageId: "nightlife-turnup-pass" }],
   ["name", { name: "A" }],
+  ["name", { name: "Ada\r\nBcc: x@example.com" }],
   ["email", { email: "not-an-email" }],
   ["phone", { phone: "12" }],
   ["date", { preferredDate: "2020-01-01" }],
@@ -130,4 +132,19 @@ test("accepts a JSON string body", async () => {
   mockSupabase();
   const { status } = await call(JSON.stringify(validBody()));
   assert.equal(status, 201);
+});
+
+test("booking still succeeds when emails fail", async () => {
+  process.env.GMAIL_USER = "muvment@gmail.com";
+  process.env.GMAIL_APP_PASSWORD = "app-password";
+  const nodemailer = require("nodemailer");
+  const real = nodemailer.createTransport;
+  nodemailer.createTransport = () => ({ sendMail: async () => { throw new Error("smtp down"); } });
+  const calls = mockSupabase();
+  const orig = console.error; console.error = () => {};
+  const { status } = await call(validBody());
+  console.error = orig;
+  nodemailer.createTransport = real;
+  assert.equal(status, 201);
+  assert.equal(calls.length, 1);
 });
