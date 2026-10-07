@@ -47,6 +47,7 @@ test.beforeEach(() => {
   process.env.SUPABASE_URL = "https://example.supabase.co/";
   process.env.SUPABASE_SECRET_KEY = "sb_secret_test";
   delete process.env.GMAIL_USER; // no real email in these tests
+  delete process.env.BREVO_API_KEY;
 });
 
 test("saves a valid booking with the server-side price", async () => {

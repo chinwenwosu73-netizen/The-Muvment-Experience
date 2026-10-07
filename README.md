@@ -50,7 +50,7 @@ Booking requests are saved to a [Supabase](https://supabase.com) database by a s
 |---|---|
 | `api/bookings.js` | The backend. Vercel runs it at `/api/bookings`. It checks the request, takes the package name and price from `assets/js/config.js` (visitors can't change them), and saves the row. |
 | `supabase/schema.sql` | Creates the `bookings` table and locks it so the public can't read it. |
-| `lib/email.js` | The customer confirmation and admin alert emails, sent through Gmail. |
+| `lib/email.js` | The customer confirmation and admin alert emails, sent through Brevo (or Gmail). |
 | `tests/` | Automated tests. Run `npm install` once, then `npm test` (Node 20+). |
 
 Each row stores the package, its price and price basis, an estimated total, the visitor's name, email, phone, preferred date and group size, the UTM campaign tags, and a `status` (`new`, `contacted`, `confirmed`, `cancelled`) plus `notes` for your team.
@@ -70,24 +70,27 @@ If the database can't be reached, the form opens the visitor's email app with th
 
 ### Booking emails
 
-Every saved booking sends two emails from your Gmail account (`lib/email.js`):
+Every saved booking sends two emails (`lib/email.js`):
 
 - **To the customer:** "We've received your booking request," with the experience, date, group size, price, estimated total, a reference such as `MX-3F2A9C1E`, and what happens next. Replies go to the admin address.
 - **To the admin:** "New booking request," with every detail, click-to-call and click-to-email links, the campaign source, and a link to the bookings table. Replying answers the customer directly.
 
 Emails are sent after the booking is saved, so a mail problem never loses a booking. Without the settings below, bookings still save but no email is sent.
 
-**Setup (5 minutes):**
+**Setup with Brevo (recommended, free for 300 emails a day):**
 
-1. Turn on **2-Step Verification** for the Gmail account at [myaccount.google.com/security](https://myaccount.google.com/security).
-2. Create an app password at [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords). Name it `Muvment website` and copy the 16-character password.
-3. In Vercel, open **Settings → Environment Variables** and add these for **Production** and **Preview**:
-   - `GMAIL_USER` = the Gmail address, for example `yourname@gmail.com`
-   - `GMAIL_APP_PASSWORD` = the 16-character app password
-   - `ADMIN_EMAIL` = where new-booking alerts go (optional; defaults to `GMAIL_USER`; separate several addresses with commas)
-4. Redeploy, then make a test booking.
+1. Sign up at [brevo.com](https://www.brevo.com) and verify your phone number when asked.
+2. **Senders, domains & dedicated IPs → Senders → Add a sender:** enter the address emails should come from (for example your Gmail), then click the confirmation link Brevo emails you.
+3. **SMTP & API → API keys → Generate a new API key:** name it `muvment-website` and copy it.
+4. In Vercel, open **Settings → Environment Variables** and add these for **Production** and **Preview**:
+   - `BREVO_API_KEY` = the API key
+   - `SENDER_EMAIL` = the sender address you verified
+   - `ADMIN_EMAIL` = where new-booking alerts go (optional; defaults to `SENDER_EMAIL`; separate several addresses with commas)
+5. Redeploy, then make a test booking.
 
-Gmail allows about 500 emails a day. If you later send from your own domain (for example `bookings@muvment.com`), switch to a service such as Resend.
+**Or with Gmail:** set `GMAIL_USER` and `GMAIL_APP_PASSWORD` (a Google app password; 2-Step Verification required) instead of the Brevo variables. If both are set, Brevo is used.
+
+Sending from a free address such as Gmail works, but emails are more likely to land in spam. When you have your own domain (for example `bookings@muvment.com`), authenticate it in Brevo and use it as `SENDER_EMAIL`.
 
 ### Viewing and managing bookings
 
