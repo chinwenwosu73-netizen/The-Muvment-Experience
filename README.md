@@ -36,9 +36,11 @@ Everything editable is in **`assets/js/config.js`**:
 
 ### Must do before launch
 
-- [ ] Set the real `whatsappNumber` and `email` in `config.js`. They are placeholders now.
-- [ ] Connect the booking database: follow **Booking database** below. Until it's connected, the form opens the visitor's email app with the request already written.
-- [ ] Add package photography and an `og:image` for link previews.
+- [x] Real contact details: support@autogirl.ng and +234 813 019 5538 (also used for WhatsApp).
+- [ ] Replace the placeholder `mainSiteUrl`, `privacyPolicyUrl` and `instagramUrl` in `config.js`.
+- [x] Booking database and emails connected (Supabase + Brevo).
+- [x] Package photography.
+- [ ] Add an `og:image` for link previews.
 - [ ] Add your analytics snippet (Google Analytics or Tag Manager) to `index.html`. These events are already sent: `cta_book`, `booking_open`, `form_submit`, `whatsapp_card`, `whatsapp_nav`, `filter_category`.
 - [ ] Resolve the remaining open questions in PRD section 9.
 

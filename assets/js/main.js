@@ -120,8 +120,15 @@
     });
     art.append(...imgs);
 
-    // Several photos: dots to switch, and a tap on the photo shows the next.
+    // Several photos: arrows, dots, swipe, and a tap on the photo shows the next.
     const dots = el("div", { class: "card__dots" });
+    const arrows = [];
+    const live = () => imgs.filter((im) => im.isConnected);
+    function step(dir) {
+      const list = live();
+      const current = list.findIndex((im) => im.classList.contains("is-active"));
+      show(list[(current + dir + list.length) % list.length]);
+    }
     if (imgs.length > 1) {
       imgs.forEach((img, i) => {
         const dot = el("button", { type: "button", class: "card__dot", "aria-label": `Show photo ${i + 1} of ${imgs.length}`, "aria-current": String(i === 0) });
@@ -129,13 +136,29 @@
         img.dot = dot;
         dots.append(dot);
       });
+      for (const [dir, label, cls] of [[-1, "Previous photo", "prev"], [1, "Next photo", "next"]]) {
+        const btn = el("button", { type: "button", class: `card__arrow card__arrow--${cls}`, "aria-label": label });
+        btn.innerHTML = dir < 0
+          ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'
+          : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+        btn.addEventListener("click", (e) => { e.stopPropagation(); step(dir); });
+        arrows.push(btn);
+      }
       art.addEventListener("click", (e) => {
-        if (e.target.tagName !== "IMG") return;
-        const live = imgs.filter((im) => im.isConnected);
-        show(live[(live.indexOf(e.target) + 1) % live.length]);
+        if (e.target.tagName === "IMG") step(1);
+      });
+      // Swipe left/right on touch screens.
+      let startX = null;
+      art.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      art.addEventListener("touchend", (e) => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        startX = null;
+        if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
       });
     }
     function show(img) {
+      if (!img) return;
       imgs.forEach((im) => {
         im.classList.toggle("is-active", im === img);
         if (im.dot) im.dot.setAttribute("aria-current", String(im === img));
@@ -145,15 +168,15 @@
       const wasActive = img.classList.contains("is-active");
       img.remove();
       if (img.dot) img.dot.remove();
-      const live = imgs.filter((im) => im.isConnected);
-      if (wasActive && live.length) show(live[0]);
-      if (live.length < 2) dots.remove();
+      const list = live();
+      if (wasActive && list.length) show(list[0]);
+      if (list.length < 2) { dots.remove(); arrows.forEach((a) => a.remove()); }
     }
 
     art.append(el("span", { class: "card__tag", text: categoryName[pkg.category] }));
     if (pkg.tier) art.append(el("span", { class: "card__tier", text: pkg.tier }));
     if (imgs.length > 8) dots.classList.add("card__dots--many");
-    if (imgs.length > 1) art.append(dots);
+    if (imgs.length > 1) art.append(dots, ...arrows);
     return art;
   }
 

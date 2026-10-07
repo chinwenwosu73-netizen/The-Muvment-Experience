@@ -10,12 +10,10 @@
  */
 window.MUVMENT_CONFIG = {
   contact: {
-    // TODO: replace with the real Concierge WhatsApp number, digits only,
-    // international format without "+" (e.g. 2348012345678).
-    whatsappNumber: "2340000000000",
-    // TODO: replace with the real operations inbox.
-    email: "concierge@muvment.example",
-    phoneDisplay: "+234 000 000 0000",
+    // Concierge WhatsApp number: digits only, international format, no "+".
+    whatsappNumber: "2348130195538",
+    email: "support@autogirl.ng",
+    phoneDisplay: "+234 813 019 5538",
     mainSiteUrl: "https://muvment.example",
     privacyPolicyUrl: "https://muvment.example/privacy",
     instagramUrl: "https://instagram.com/",
@@ -56,7 +54,7 @@ window.MUVMENT_CONFIG = {
     {
       id: "executive-oceanic-romance",
       image: "assets/img/packages/executive-oceanic-romance.jpg",
-      imageAlt: "A couple sharing dinner and wine aboard a private boat on the Lagos lagoon at sunset",
+      imageAlt: "The shaded upper deck of a private yacht at sunset, with seating overlooking calm open water",
       category: "romance",
       title: "The Executive Oceanic Romance",
       tagline: "A private evening on the water.",
