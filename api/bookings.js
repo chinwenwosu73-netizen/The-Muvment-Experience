@@ -10,16 +10,23 @@
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
+const { sendBookingEmails } = require("../lib/email.js");
 
 // Package names and prices come from the same file the website uses, so the
 // stored price always matches what the visitor saw and can't be edited by them.
-let packagesCache = null;
-function loadPackages() {
-  if (packagesCache) return packagesCache;
+let configCache = null;
+function loadConfig() {
+  if (configCache) return configCache;
   const source = fs.readFileSync(path.join(__dirname, "..", "assets", "js", "config.js"), "utf8");
   const sandbox = { window: {} };
   vm.runInNewContext(source, sandbox, { timeout: 1000 });
-  packagesCache = new Map(sandbox.window.MUVMENT_CONFIG.packages.map((p) => [p.id, p]));
+  configCache = sandbox.window.MUVMENT_CONFIG;
+  return configCache;
+}
+
+let packagesCache = null;
+function loadPackages() {
+  if (!packagesCache) packagesCache = new Map(loadConfig().packages.map((p) => [p.id, p]));
   return packagesCache;
 }
 
@@ -47,7 +54,7 @@ function validate(body, packages) {
   const pkg = packages.get(str(body.packageId));
 
   if (!pkg) return { field: "package", error: "Please choose an experience." };
-  if (name.length < 2 || name.length > 120) return { field: "name", error: "Please enter your full name." };
+  if (name.length < 2 || name.length > 120 || /[\u0000-\u001f\u007f]/.test(name)) return { field: "name", error: "Please enter your full name." };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) {
     return { field: "email", error: "Please enter a valid email address." };
   }
@@ -132,13 +139,21 @@ module.exports = async function handler(req, res) {
     utm: cleanUtm(body.source),
   };
 
+  let saved;
   try {
-    const saved = await insertBooking(row);
-    return res.status(201).json({ ok: true, id: saved && saved.id });
+    saved = await insertBooking(row);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "We couldn't save your request just now." });
   }
+
+  // Saved first, then emailed: an email problem never loses a booking.
+  try {
+    await sendBookingEmails({ ...row, ...saved }, { contact: loadConfig().contact });
+  } catch (err) {
+    console.error("Booking emails failed:", err);
+  }
+  return res.status(201).json({ ok: true, id: saved && saved.id });
 };
 
 module.exports.validate = validate;

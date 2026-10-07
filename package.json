@@ -4,5 +4,8 @@
   "description": "Muvment Experience landing page and booking backend",
   "scripts": {
     "test": "node --test"
+  },
+  "dependencies": {
+    "nodemailer": "^10.0.16"
   }
 }
