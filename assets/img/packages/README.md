@@ -1,17 +1,14 @@
 # Package photos
 
-Still needed: one photo per package below, **named exactly as listed**. Each photo appears on its card automatically. Until a photo is added, the card keeps its colour artwork, so you can add them one at a time.
+Every package now has at least one photo. A package's photos are listed under `image` or `images` in `assets/js/config.js`. If a listed file is missing, the card shows its colour artwork instead.
 
-**Format:** `.jpg`, landscape (4:3), about 1600×1200 px, under 400 KB. You can compress photos free at https://squoosh.app.
+**Format for new photos:** `.jpg`, landscape (4:3), about 1600×1200 px, under 400 KB. You can compress photos free at https://squoosh.app.
 
-| File name | Package | What the photo should show |
-|---|---|---|
-| `executive-oceanic-romance.jpg` | The Executive Oceanic Romance | A couple on a private boat on the Lagos lagoon at golden hour, with wine glasses and a dinner table on deck |
-
-## Already added
+## Photos on the site
 
 | Package | Photos (venue) |
 |---|---|
+| The Executive Oceanic Romance | `executive-oceanic-romance.jpg` (yacht deck at sunset) |
 | Artsy Couple | `artsy-couple-paint-and-sip.jpg`, `artsy-couple-art-hub.jpg` (CeraCerni's Art Hub), plus the three George Residence photos |
 | Soft Life Saturday, Regular and Premium | `oriki-spa-couples-suite.jpg`, `oriki-spa-ivy-room.jpg`, `oriki-spa-treatment-room.jpg` (ORÍKÌ Spa) |
 | Artsy Couple and Soft Life Saturday, Premium | `george-residence-wood-suite.jpg`, `george-residence-cove-suite.jpg`, `george-residence-marble-suite.jpg` (George Residence) |
@@ -24,7 +21,7 @@ Still needed: one photo per package below, **named exactly as listed**. Each pho
 | Artsy Couple, Soft Life Saturday Regular, The Corporate Café Strategy, The Creative Ignition Off-Site | `fired-and-iced-garden-terrace.jpg`, `fired-and-iced-sharing-platters.jpg`, `fired-and-iced-dishes.jpg` (Fired and Iced Restaurant) |
 | The Corporate Café Strategy | `carven-gaming-arena.jpg`, `carven-racing-simulators.jpg` (Carven) |
 
-A card can show several photos: list them under `images` in `assets/js/config.js`, and the card shows dots to switch between them.
+A card can show several photos: list them under `images` in `assets/js/config.js`, and the card shows arrows and dots to move between them.
 
 ## Where to get photos
 

@@ -291,7 +291,28 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; text-
 .card__art img { opacity: 0; transition: opacity 0.6s var(--ease), transform 1.2s var(--ease); cursor: pointer; }
 .card__art img.is-active { opacity: 1; }
 .card__art img:only-of-type { cursor: default; }
-.card__tag, .card__tier, .card__dots { z-index: 2; }
+.card__tag, .card__tier, .card__dots, .card__arrow { z-index: 2; }
+.card__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; padding: 0;
+  display: grid; place-items: center;
+  border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text);
+  box-shadow: 0 4px 14px rgba(28, 24, 19, 0.25);
+  cursor: pointer;
+  transition: opacity 0.25s var(--ease), background 0.25s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.card__arrow--prev { left: 0.75rem; }
+.card__arrow--next { right: 0.75rem; }
+.card__arrow svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.card__arrow:hover { background: #ffffff; }
+/* On devices with a mouse, arrows appear on hover or keyboard focus. */
+@media (hover: hover) and (pointer: fine) {
+  .card__arrow { opacity: 0; }
+  .card:hover .card__arrow, .card__arrow:focus-visible { opacity: 1; }
+}
 .card__dots {
   position: absolute; left: 50%; bottom: 0.6rem; transform: translateX(-50%);
   display: flex; gap: 0.15rem;
