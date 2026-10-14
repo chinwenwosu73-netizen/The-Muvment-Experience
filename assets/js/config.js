@@ -13,6 +13,9 @@ window.MUVMENT_CONFIG = {
     // Concierge WhatsApp number: digits only, international format, no "+".
     whatsappNumber: "2348130195538",
     email: "support@autogirl.ng",
+    // The Concierge inbox: every new booking request is emailed here, and
+    // customers' replies to their confirmation email come here too.
+    bookingsInbox: "support@autogirl.ng",
     phoneDisplay: "+234 813 019 5538",
     mainSiteUrl: "https://muvment.example",
     privacyPolicyUrl: "https://muvment.example/privacy",

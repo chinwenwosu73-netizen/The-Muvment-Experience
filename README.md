@@ -75,7 +75,7 @@ If the database can't be reached, the form opens the visitor's email app with th
 Every saved booking sends two emails (`lib/email.js`):
 
 - **To the customer:** "We've received your booking request," with the experience, date, group size, price, estimated total, a reference such as `MX-3F2A9C1E`, and what happens next. Replies go to the admin address.
-- **To the admin:** "New booking request," with every detail, click-to-call and click-to-email links, the campaign source, and a link to the bookings table. Replying answers the customer directly.
+- **To the Concierge (support@autogirl.ng):** "New booking request," with every detail, click-to-call and click-to-email links, the campaign source, and a link to the bookings table. Replying answers the customer directly.
 
 Both emails also list everything the experience includes and show up to three of its photos, picked across its venues. The photos load from the live site: Vercel's production address is used automatically, or set `SITE_URL` (for example `https://experience.muvment.com`) once you have your own domain.
 
@@ -89,8 +89,12 @@ Emails are sent after the booking is saved, so a mail problem never loses a book
 4. In Vercel, open **Settings → Environment Variables** and add these for **Production** and **Preview**:
    - `BREVO_API_KEY` = the API key
    - `SENDER_EMAIL` = the sender address you verified
-   - `ADMIN_EMAIL` = where new-booking alerts go (optional; defaults to `SENDER_EMAIL`; separate several addresses with commas)
+   - `ADMIN_EMAIL` = optional extra addresses that also get new-booking alerts (comma-separated)
 5. Redeploy, then make a test booking.
+
+New-booking alerts always go to the Concierge inbox, `contact.bookingsInbox` in `assets/js/config.js` (currently `support@autogirl.ng`). Customers' replies to their confirmation email go there too.
+
+**Make sure customers receive their email:** send from your own domain, not Gmail. Inboxes such as Yahoo, Outlook and company mail often reject or spam mail that claims to come from a Gmail address but is sent by Brevo. In Brevo, open **Senders, domains & dedicated IPs → Domains → Add a domain**, enter `autogirl.ng`, and add the DNS records Brevo shows at your domain provider. Once Brevo says the domain is authenticated, set `SENDER_EMAIL` to an address on it (for example `support@autogirl.ng`) and redeploy. Brevo's **Transactional → Logs** page shows what happened to every email (delivered, bounced or blocked).
 
 **Or with Gmail:** set `GMAIL_USER` and `GMAIL_APP_PASSWORD` (a Google app password; 2-Step Verification required) instead of the Brevo variables. If both are set, Brevo is used.
 
