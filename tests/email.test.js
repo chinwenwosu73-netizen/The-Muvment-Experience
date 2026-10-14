@@ -155,3 +155,21 @@ test("both emails list exactly what the booked experience includes", () => {
   assert.ok(admin.html.includes("has requested <strong>Artsy Couple</strong>"));
   assert.ok(customer.html.includes("email you as soon as possible"));
 });
+
+test("emails show the package photos: one large, then two side by side", () => {
+  const photos = [
+    { url: "https://muvment.example/assets/img/a.jpg", alt: "First <photo>" },
+    { url: "https://muvment.example/assets/img/b.jpg", alt: "Second" },
+    { url: "https://muvment.example/assets/img/c.jpg", alt: "Third" },
+  ];
+  for (const { html } of [adminEmail({ ...booking, photos }), customerEmail({ ...booking, photos }, {})]) {
+    assert.equal((html.match(/<img /g) || []).length, 3);
+    assert.ok(html.includes('src="https://muvment.example/assets/img/a.jpg"'));
+    assert.ok(html.includes('width="504"') && html.includes('width="246"'));
+    assert.ok(html.includes('alt="First &lt;photo&gt;"'), "alt text is escaped");
+  }
+});
+
+test("no photos means no image block", () => {
+  assert.ok(!adminEmail(booking).html.includes("<img"));
+});

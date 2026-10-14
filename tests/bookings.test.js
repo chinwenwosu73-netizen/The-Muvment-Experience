@@ -167,3 +167,21 @@ test("emails receive the booked package's inclusions", async () => {
     assert.ok(mail.htmlContent.includes("The Creative Ignition Off-Site"));
   }
 });
+
+test("photo URLs come from SITE_URL / Vercel's production URL, never the request", () => {
+  const { photosFor, loadPackages } = handler;
+  const pkg = loadPackages().get("corporate-cafe-strategy");
+  delete process.env.SITE_URL; delete process.env.VERCEL_PROJECT_PRODUCTION_URL; delete process.env.VERCEL_URL;
+  assert.deepEqual(photosFor(pkg), [], "no known site address: no photos");
+  process.env.VERCEL_PROJECT_PRODUCTION_URL = "the-muvment-experience.vercel.app";
+  const photos = photosFor(pkg);
+  assert.equal(photos.length, 3, "at most three");
+  assert.equal(photos[0].url, "https://the-muvment-experience.vercel.app/assets/img/packages/cafe-one-lounge.jpg");
+  assert.deepEqual(photos.map((p) => p.url.split("/").pop()),
+    ["cafe-one-lounge.jpg", "fired-and-iced-sharing-platters.jpg", "arrowsden-archery-target.jpg"], "spread across venues");
+  assert.ok(photos[0].alt.length > 0);
+  process.env.SITE_URL = "https://experience.muvment.com/";
+  assert.ok(photosFor(pkg)[0].url.startsWith("https://experience.muvment.com/assets/"), "SITE_URL wins");
+  assert.equal(photosFor(loadPackages().get("executive-oceanic-romance")).length, 1, "single-image packages work");
+  delete process.env.SITE_URL; delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
+});

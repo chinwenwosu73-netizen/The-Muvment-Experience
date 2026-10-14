@@ -77,6 +77,8 @@ Every saved booking sends two emails (`lib/email.js`):
 - **To the customer:** "We've received your booking request," with the experience, date, group size, price, estimated total, a reference such as `MX-3F2A9C1E`, and what happens next. Replies go to the admin address.
 - **To the admin:** "New booking request," with every detail, click-to-call and click-to-email links, the campaign source, and a link to the bookings table. Replying answers the customer directly.
 
+Both emails also list everything the experience includes and show up to three of its photos, picked across its venues. The photos load from the live site: Vercel's production address is used automatically, or set `SITE_URL` (for example `https://experience.muvment.com`) once you have your own domain.
+
 Emails are sent after the booking is saved, so a mail problem never loses a booking. Without the settings below, bookings still save but no email is sent.
 
 **Setup with Brevo (recommended, free for 300 emails a day):**
