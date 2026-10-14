@@ -149,3 +149,21 @@ test("booking still succeeds when emails fail", async () => {
   assert.equal(status, 201);
   assert.equal(calls.length, 1);
 });
+
+test("emails receive the booked package's inclusions", async () => {
+  process.env.BREVO_API_KEY = "xkeysib-test";
+  process.env.SENDER_EMAIL = "chinwe@gmail.com";
+  const sent = [];
+  global.fetch = async (url, opts) => {
+    if (url.includes("brevo")) { sent.push(JSON.parse(opts.body)); return { ok: true, json: async () => ({}) }; }
+    return { ok: true, status: 201, json: async () => [{ id: "uuid-1" }], text: async () => "" };
+  };
+  const { status } = await call(validBody({ packageId: "creative-ignition-off-site", groupSize: 8 }));
+  delete process.env.BREVO_API_KEY;
+  assert.equal(status, 201);
+  assert.equal(sent.length, 2);
+  for (const mail of sent) {
+    assert.ok(mail.htmlContent.includes("Leisure Sports Paintball"), "inclusion listed");
+    assert.ok(mail.htmlContent.includes("The Creative Ignition Off-Site"));
+  }
+});

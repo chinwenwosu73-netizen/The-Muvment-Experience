@@ -15,12 +15,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-beach.jpg">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#experiences">Skip to experiences</a>
 
-  <header class="nav" data-nav>
+  <header class="nav nav--over-photo" data-nav>
     <a class="nav__brand" href="#top" aria-label="Muvment Experience, back to top">
       <span class="nav__mark">MUVMENT</span>
       <span class="nav__sub">Experience</span>
@@ -35,8 +36,9 @@
 
   <main id="top">
     <!-- 1. Hero -->
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero hero--photo" aria-labelledby="hero-title">
       <div class="hero__media" aria-hidden="true" data-hero-media>
+        <img class="hero__photo" src="assets/img/hero-beach.jpg" alt="" fetchpriority="high" decoding="async">
         <div class="hero__glow hero__glow--a"></div>
         <div class="hero__glow hero__glow--b"></div>
         <div class="hero__grain"></div>

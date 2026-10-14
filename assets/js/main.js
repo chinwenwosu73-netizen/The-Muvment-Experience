@@ -80,7 +80,8 @@
   if (config.heroVideo) {
     const video = el("video", { src: config.heroVideo, autoplay: true, muted: true, loop: true, playsinline: true });
     video.muted = true;
-    $("[data-hero-media]").prepend(video);
+    const photo = $("[data-hero-media] .hero__photo");
+    if (photo) photo.after(video); else $("[data-hero-media]").prepend(video);
   }
 
   const marqueeWords = categories.map((c) => c.name).concat(["Lagos", "Concierge-handled"]);
@@ -402,7 +403,7 @@
     const sendByEmail = (channel) => {
       window.location.href = mailtoFor(request);
       track("form_submit", { package: request.packageId, channel });
-      showDone(`Your email app should now open with your request for ${request.package} ready to send — just press Send. The Muvment Concierge will respond ${contact.responseTime}.`);
+      showDone(`Your email app should now open with your request for ${request.package} ready to send — just press Send. The Muvment Concierge will email you ${contact.responseTime}.`);
     };
 
     if (!booking.formEndpoint) {
@@ -426,7 +427,7 @@
 
       if (res && res.ok) {
         track("form_submit", { package: request.packageId, channel: "form" });
-        showDone(`We've received your request for ${request.package}. The Muvment Concierge will contact you ${contact.responseTime} to confirm your booking.`);
+        showDone(`We've received your request for ${request.package}. The Muvment Concierge will email you ${contact.responseTime} to confirm your booking.`);
       } else if (res && res.status === 400) {
         // The server found a problem with a field: show it like the browser checks do.
         const data = await res.json().catch(() => ({}));
