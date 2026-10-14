@@ -38,6 +38,26 @@ function estimateFor(pkg, size) {
   return pkg.priceBasis === "couple" ? pkg.price * Math.ceil(size / 2) : pkg.price * size;
 }
 
+// The site's public address, used to link package photos in emails. Set
+// SITE_URL to your own domain; otherwise Vercel's production URL is used.
+// (Never taken from request headers, which a caller could fake.)
+function siteUrl() {
+  const raw = process.env.SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "";
+  if (!raw) return "";
+  return (/^https?:\/\//.test(raw) ? raw : `https://${raw}`).replace(/\/+$/, "");
+}
+
+// Up to three of the package's photos, as absolute URLs for the emails.
+// Picked from the start, middle and end of the list so a multi-venue day
+// shows several venues rather than three shots of the first one.
+function photosFor(pkg) {
+  const base = siteUrl();
+  if (!base) return [];
+  const list = pkg.images || (pkg.image ? [{ src: pkg.image, alt: pkg.imageAlt }] : []);
+  const picks = list.length <= 3 ? list : [0, Math.round((list.length - 1) / 2), list.length - 1].map((i) => list[i]);
+  return picks.map((p) => ({ url: `${base}/${encodeURI(p.src.replace(/^\/+/, ""))}`, alt: p.alt || fullTitle(pkg) }));
+}
+
 function todayUtc() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -149,7 +169,7 @@ module.exports = async function handler(req, res) {
 
   // Saved first, then emailed: an email problem never loses a booking.
   try {
-    await sendBookingEmails({ ...row, ...saved, includes: pkg.includes }, { contact: loadConfig().contact });
+    await sendBookingEmails({ ...row, ...saved, includes: pkg.includes, photos: photosFor(pkg) }, { contact: loadConfig().contact });
   } catch (err) {
     console.error("Booking emails failed:", err);
   }
@@ -158,3 +178,4 @@ module.exports = async function handler(req, res) {
 
 module.exports.validate = validate;
 module.exports.loadPackages = loadPackages;
+module.exports.photosFor = photosFor;
