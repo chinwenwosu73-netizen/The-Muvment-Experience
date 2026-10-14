@@ -65,6 +65,7 @@ test("admin email has contact details and a link to the bookings table", () => {
 });
 
 test("sends both emails with the right recipients and reply-to", async () => {
+  const origLog = console.log; console.log = () => {};
   process.env.ADMIN_EMAIL = "ops@example.com";
   const t = fakeTransport();
   const result = await sendBookingEmails(booking, { transport: t, contact: {} });
@@ -172,4 +173,23 @@ test("emails show the package photos: one large, then two side by side", () => {
 
 test("no photos means no image block", () => {
   assert.ok(!adminEmail(booking).html.includes("<img"));
+});
+
+test("booking alerts go to the Concierge inbox, plus any ADMIN_EMAIL extras, without duplicates", async () => {
+  const { conciergeRecipients } = require("../lib/email.js");
+  const contact = { bookingsInbox: "support@autogirl.ng" };
+  delete process.env.ADMIN_EMAIL;
+  assert.deepEqual(conciergeRecipients(contact), ["support@autogirl.ng"]);
+  process.env.ADMIN_EMAIL = "chinwe@gmail.com, SUPPORT@autogirl.ng";
+  assert.deepEqual(conciergeRecipients(contact), ["support@autogirl.ng", "chinwe@gmail.com"]);
+
+  delete process.env.ADMIN_EMAIL;
+  const t = fakeTransport();
+  const orig = console.log; console.log = () => {};
+  await sendBookingEmails(booking, { transport: t, contact });
+  console.log = orig;
+  const [toCustomer, toConcierge] = t.sent;
+  assert.equal(toConcierge.to, "support@autogirl.ng");
+  assert.equal(toCustomer.replyTo, "support@autogirl.ng", "customer replies reach the Concierge");
+  assert.equal(toCustomer.to, "ada@example.com");
 });
