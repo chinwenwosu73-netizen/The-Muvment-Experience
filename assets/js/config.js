@@ -17,7 +17,7 @@ window.MUVMENT_CONFIG = {
     mainSiteUrl: "https://muvment.example",
     privacyPolicyUrl: "https://muvment.example/privacy",
     instagramUrl: "https://instagram.com/",
-    responseTime: "within 24 hours",
+    responseTime: "as soon as possible",
   },
 
   booking: {
@@ -29,8 +29,8 @@ window.MUVMENT_CONFIG = {
     formEndpoint: "/api/bookings",
   },
 
-  // Optional full-screen hero video (mp4). Leave empty to use the
-  // animated backdrop.
+  // Optional full-screen hero video (mp4), played over the hero photo
+  // (assets/img/hero-beach.jpg, set in index.html). Leave empty for the photo.
   heroVideo: "",
 
   categories: [

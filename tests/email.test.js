@@ -141,3 +141,17 @@ test("Brevo is preferred over Gmail when both are set", async () => {
   await sendBookingEmails(booking);
   assert.ok(used);
 });
+
+test("both emails list exactly what the booked experience includes", () => {
+  const b = { ...booking, includes: ["CeraCerni's Art Hub — Spin and Spill session for two", "George Residence — opulent suite & breakfast"] };
+  const admin = adminEmail(b);
+  const customer = customerEmail(b, { responseTime: "as soon as possible" });
+  for (const { html, text } of [admin, customer]) {
+    assert.ok(html.includes("<strong>CeraCerni&#39;s Art Hub</strong> — Spin and Spill session for two"));
+    assert.ok(html.includes("opulent suite &amp; breakfast"), "inclusions are escaped");
+    assert.ok(text.includes("  - George Residence — opulent suite & breakfast"));
+  }
+  assert.ok(admin.html.includes("To set up"));
+  assert.ok(admin.html.includes("has requested <strong>Artsy Couple</strong>"));
+  assert.ok(customer.html.includes("email you as soon as possible"));
+});

@@ -14,6 +14,7 @@
   --accent: #8f6b34;
   --accent-soft: #e9dcc5;
   --on-accent: #ffffff;
+  --on-photo-gold: #f0d6a4;
   --error: #b3261e;
 
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
@@ -124,6 +125,14 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; text-
   .nav__links { display: flex; }
 }
 
+/* Over the hero photo (before scrolling), the nav turns light. */
+.nav--over-photo:not(.is-scrolled) { color: #ffffff; }
+.nav--over-photo:not(.is-scrolled) .nav__sub { color: var(--on-photo-gold); }
+.nav--over-photo:not(.is-scrolled) .nav__links a { color: rgba(255, 255, 255, 0.85); }
+.nav--over-photo:not(.is-scrolled) .nav__links a:hover { color: #ffffff; }
+.nav--over-photo:not(.is-scrolled) .nav__cta { color: #ffffff; border-color: rgba(255, 255, 255, 0.55); }
+.nav--over-photo:not(.is-scrolled) .nav__cta:hover { background: rgba(255, 255, 255, 0.14); border-color: #ffffff; }
+
 /* ---------- Hero ---------- */
 
 .hero {
@@ -134,7 +143,8 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; text-
   isolation: isolate;
 }
 .hero__media { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #ffffff 0%, #fbf8f2 100%); }
-.hero__media video { width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
+.hero__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
+.hero--photo .hero__media video { opacity: 1; }
 .hero__glow {
   position: absolute; border-radius: 50%; filter: blur(80px);
   animation: drift 22s ease-in-out infinite alternate;
@@ -177,6 +187,37 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; text-
 .hero__lede { margin: 0; max-width: 34rem; color: var(--muted); font-size: 1.02rem; }
 @media (min-width: 860px) {
   .hero__foot { grid-template-columns: 1fr auto; }
+}
+
+/* Hero with a full-bleed photo: light text over a soft dark fade. */
+.hero--photo .hero__media { background: #0e3a4a; }
+.hero__photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; max-width: none;
+  object-fit: cover; object-position: 62% center;
+}
+.hero--photo .hero__media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(8, 24, 34, 0.38) 0%, rgba(8, 24, 34, 0.05) 26%,
+    rgba(8, 24, 34, 0.18) 52%, rgba(8, 24, 34, 0.72) 100%);
+}
+.hero--photo .hero__glow, .hero--photo .hero__grain { display: none; }
+.hero--photo .hero__title, .hero--photo .eyebrow { color: #ffffff; }
+.hero--photo .hero__title { text-shadow: 0 2px 40px rgba(8, 24, 34, 0.3); }
+.hero--photo .hero__title em { color: var(--on-photo-gold); }
+.hero--photo .hero__lede { color: rgba(255, 255, 255, 0.9); }
+.hero--photo .btn--primary { background: #ffffff; color: var(--text); }
+.hero--photo .btn--primary:hover { background: var(--accent); color: var(--on-accent); }
+.hero--photo .marquee {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(8, 24, 34, 0.35);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.hero--photo .marquee__track span { color: rgba(255, 255, 255, 0.85); }
+.hero--photo .marquee__track span::after { color: var(--on-photo-gold); }
+@media (max-width: 700px) {
+  .hero__photo { object-position: 72% center; }
 }
 
 /* ---------- Marquee ---------- */

@@ -149,7 +149,7 @@ module.exports = async function handler(req, res) {
 
   // Saved first, then emailed: an email problem never loses a booking.
   try {
-    await sendBookingEmails({ ...row, ...saved }, { contact: loadConfig().contact });
+    await sendBookingEmails({ ...row, ...saved, includes: pkg.includes }, { contact: loadConfig().contact });
   } catch (err) {
     console.error("Booking emails failed:", err);
   }
